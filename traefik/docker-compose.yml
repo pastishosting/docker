@@ -5,6 +5,9 @@ networks:
   plesk:
     external:
       name: plesk_default
+  airtime:
+    external:
+      name: airtime_default
 
 services:
   traefik:
@@ -18,3 +21,4 @@ services:
     networks:
       - default
       - plesk
+      - airtime
