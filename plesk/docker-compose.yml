@@ -20,9 +20,6 @@ services:
   plesk:
     build:
       context: .
-      args:
-        - MAILJET_API_KEY=8b410c004ac778adb5c990ddf9e51cd3
-        - MAILJET_SECRET_KEY=c3c89f60bc6576053e20433f3d4a7e55
     image: pastishosting/plesk
     privileged: true
     expose:
@@ -43,6 +40,11 @@ services:
       - "plesk-opt-psa:/opt/psa"
       - "plesk-opt-plesk:/opt/plesk"
       - "plesk-var-parallels:/var/parallels"
+      - "$PWD/files/etc/postfix/main.cf:/etc/postfix/main.cf"
+      - "$PWD/files/etc/postfix/sasl_passwd:/etc/postfix/sasl_passwd"
+      - "$PWD/files/etc/postfix/sasl_passwd.db:/etc/postfix/sasl_passwd.db"
+      - "$PWD/files/etc/proftpd.d/pastis-hosting.conf:/etc/proftpd.d/pastis-hosting.conf"
+      - "$PWD/files/ssh/authorized_keys:/root/.ssh/authorized_keys"
     links:
       - mysql:mysql.1
     external_links:
