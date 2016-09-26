@@ -45,6 +45,8 @@ services:
       - "plesk-var-parallels:/var/parallels"
     links:
       - mysql:mysql.1
+    external_links:
+      - solr14_solr-14_1:solr14
     labels:
       - "io.rancher.container.network=true"
       - "traefik.enable=true"
