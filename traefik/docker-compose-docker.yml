@@ -1,0 +1,24 @@
+version: '2'
+
+networks:
+  default: ~
+  plesk:
+    external:
+      name: plesk_default
+  airtime:
+    external:
+      name: airtime_default
+
+services:
+  traefik:
+    image: traefik:v1.0.2
+    volumes:
+      - "$PWD/etc/traefik/traefik.toml:/etc/traefik/traefik.toml"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - "8080:8080"
+      - "80:80"
+    networks:
+      - default
+      - plesk
+      - airtime
