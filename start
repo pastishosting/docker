@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Fail early
+set -e
+
+HOST=${1:-$(hostname)}
+
+function log() {
+    echo "[$(date +%c)] $1"
+}
+
+log "Starting stacks - hostname=${HOST}"
+for stack in ./*; do
+    if [ -d $stack ]; then
+        if grep -q ${HOST} $stack/.servers; then
+            log "$stack"
+            if [ -f $stack/docker-compose-${HOST}.yml ]; then
+                docker-compose -f $stack/docker-compose-${HOST}.yml up -d
+            elif [ -f $stack/docker-compose.yml ]; then
+                docker-compose -f $stack/docker-compose.yml up -d
+            fi
+        fi
+    fi
+done
