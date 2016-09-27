@@ -1,8 +1,6 @@
 version: '2'
 
 volumes:
-  chefserver-etc-opscode: ~
-  chefserver-var-log-opscode: ~
   chefserver-var-opt-opscode: ~
 
 services:
@@ -18,8 +16,6 @@ services:
     environment:
       - "PUBLIC_URL=http://chef.pastis-hosting.net"
     volumes:
-      - chefserver-etc-opscode:/etc/opscode
-      - chefserver-var-log-opscode:/var/log/opscode:rw
       - chefserver-var-opt-opscode:/var/opt/opscode
     domainname: pastis-hosting.net
     hostname: chef
