@@ -8,6 +8,9 @@ networks:
   airtime:
     external:
       name: airtime_default
+  rancher:
+    external:
+      name: rancher_default
 
 services:
   traefik:
@@ -19,6 +22,7 @@ services:
       - "8080:8080"
       - "80:80"
     networks:
+      - airtime
       - default
       - plesk
-      - airtime
+      - rancher
