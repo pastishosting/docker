@@ -9,3 +9,9 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y chef-server-core chef \
     && rm -rf /var/lib/apt/lists/*
+
+ADD files/chef-server-setup.sh /chef-server-setup.sh
+RUN /bin/bash /chef-server-setup.sh
+
+ADD files/chef-server-startup.sh /chef-server-startup.sh
+CMD ["bash", "/chef-server-startup.sh"]
