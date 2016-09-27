@@ -12,12 +12,14 @@ function log() {
 log "Starting stacks - hostname=${HOST}"
 for stack in ./*; do
     if [ -d $stack ]; then
-        if grep -q ${HOST} $stack/.servers; then
+        if [ -f $stack/.servers ] && grep -q ${HOST} $stack/.servers; then
             log "$stack"
             if [ -f $stack/docker-compose-${HOST}.yml ]; then
                 docker-compose -f $stack/docker-compose-${HOST}.yml up -d
+                ( exec $(find $stack/hooks -name '*' -type f | xargs) $stack/docker-compose-${HOST}.yml )
             elif [ -f $stack/docker-compose.yml ]; then
                 docker-compose -f $stack/docker-compose.yml up -d
+                ( exec $(find $stack/hooks -name '*' -type f | xargs) $stack/docker-compose.yml )
             fi
         fi
     fi
