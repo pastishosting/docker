@@ -6,6 +6,7 @@ volumes:
 services:
   chefserver:
     image: quay.io/3ofcoins/chef-server:latest
+    restart: always
     labels:
       - "io.rancher.container.network=true"
       - "traefik.enable=true"
