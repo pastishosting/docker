@@ -7,4 +7,5 @@ RUN apt-get update \
     && echo "deb https://packages.chef.io/stable-apt trusty main" > /etc/apt/sources.list.d/chef-stable.list \
     && apt-get update \
     && apt-get upgrade -y \
+    && apt-get install -y chef-server-core chef \
     && rm -rf /var/lib/apt/lists/*
