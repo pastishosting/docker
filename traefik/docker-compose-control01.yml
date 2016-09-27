@@ -5,6 +5,9 @@ networks:
   rancher:
     external:
       name: rancher_default
+  chefserver:
+    external:
+      name: chefserver_default
 
 services:
   traefik:
@@ -16,5 +19,6 @@ services:
       - "8080:8080"
       - "80:80"
     networks:
+      - chefserver
       - default
       - rancher
