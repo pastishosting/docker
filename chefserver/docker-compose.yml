@@ -5,6 +5,7 @@ volumes:
 
 services:
   chefserver:
+    build: .
     image: quay.io/3ofcoins/chef-server:latest
     restart: always
     labels:
