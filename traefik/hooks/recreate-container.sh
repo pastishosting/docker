@@ -5,5 +5,8 @@ EVENT=$1
 COMPOSE_FILE=$2
 
 if [ $EVENT == "up" ]; then
-    docker-compose -f $COMPOSE_FILE up --force-recreate -d
+    # Ugly workaround
+    docker-compose -f $COMPOSE_FILE stop
+    docker-compose -f $COMPOSE_FILE rm -f
+    docker-compose -f $COMPOSE_FILE start
 fi
