@@ -11,6 +11,7 @@ RUN apt-get update -y \
         openssh-server \
         postfix \
         rpl \
+        rsync \
         rsyslog \
         tmpreaper \
         vim \
