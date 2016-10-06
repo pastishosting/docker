@@ -17,4 +17,4 @@ services:
     ports:
       - "8983:8983"
     labels:
-      io.rancher.container.network: "true"
+      - "io.rancher.container.network=true"
