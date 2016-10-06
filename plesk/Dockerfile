@@ -15,6 +15,12 @@ RUN apt-get update -y \
         rsyslog \
         tmpreaper \
         vim \
+        # Packages required by some legacy projects
+        # -- radio.musiqueapproximative.net
+        lame \
+        libsox-fmt-mp3 \
+        mp3gain \
+        sox \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure packages
