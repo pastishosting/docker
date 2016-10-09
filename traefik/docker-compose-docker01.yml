@@ -8,9 +8,6 @@ networks:
   airtime:
     external:
       name: airtime_default
-  glide:
-    external:
-      name: glide_default
 
 services:
   traefik:
@@ -25,5 +22,4 @@ services:
     networks:
       - airtime
       - default
-      - glide
       - plesk

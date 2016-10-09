@@ -24,7 +24,7 @@ services:
       - "airtime-etc-airtime:/etc/airtime"
       - "airtime-etc-icecast2:/etc/icecast2"
       - "airtime-etc-postgresql:/etc/postgresql"
-      - "airtime-srv-airtime-stor:/srv/airtime/stor"
+      - "airtime-srv-airtime-stor:/srv/airtime/stor:rw"
       - "airtime-usr-lib-airtime:/usr/lib/airtime"
       - "airtime-usr-share-airtime:/usr/share/airtime"
       - "airtime-var-lib-postgresql:/var/lib/postgresql"
