@@ -2,7 +2,7 @@ version: '2'
 
 services:
   jenkins:
-    image: fschaper/glide-dockerized
+    image: fschaper/glide
     restart: always
     labels:
       - "io.rancher.container.network=true"
