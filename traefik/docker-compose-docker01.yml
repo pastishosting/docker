@@ -8,6 +8,9 @@ networks:
   airtime:
     external:
       name: airtime_default
+  glide:
+    external:
+      name: glide_default
 
 services:
   traefik:
@@ -20,6 +23,7 @@ services:
       - "8080:8080"
       - "80:80"
     networks:
-      - default
-      - plesk
       - airtime
+      - default
+      - glide
+      - plesk
