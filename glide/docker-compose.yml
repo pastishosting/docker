@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  jenkins:
+    image: fschaper/glide-dockerized
+    restart: always
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.frontend.rule=HostRegexp:glide.pastis-hosting.net"
+      - "traefik.port=80"
+      - "traefik.docker.network=glide_default"
