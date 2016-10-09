@@ -5,8 +5,6 @@ services:
     build: .
     image: fschaper/glide
     restart: always
-    ports:
-      - "8099:80"
     labels:
       - "io.rancher.container.network=true"
       - "traefik.enable=true"
