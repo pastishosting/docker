@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  jenkins:
+  glide:
     image: fschaper/glide
     restart: always
     labels:
