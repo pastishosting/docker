@@ -12,3 +12,6 @@ services:
       - "traefik.frontend.rule=HostRegexp:glide.pastis-hosting.net"
       - "traefik.port=80"
       - "traefik.docker.network=glide_default"
+      - "traefik.frontend.priority=100"
+    domainname: pastis-hosting.net
+    hostname: rancher
