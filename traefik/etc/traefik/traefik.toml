@@ -28,7 +28,7 @@
 # Optional
 # Default: "ERROR"
 #
-logLevel = "ERROR"
+logLevel = "DEBUG"
 
 # Backends throttle duration: minimum duration between 2 events from providers
 # before applying a new configuration. It avoids unnecessary reloads if multiples events
