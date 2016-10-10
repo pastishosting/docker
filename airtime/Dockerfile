@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
@@ -11,7 +11,7 @@ RUN /pre.sh
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
 COPY help/install.sh /home/airtime/install.sh
 RUN chmod +x /home/airtime/install.sh && chown airtime /home/airtime/install.sh && mkdir /home/airtime/helpers
-RUN chown -R airtime /etc/airtime /var/log/airtime
+
 
 USER airtime
 COPY fixes /home/airtime/helpers
