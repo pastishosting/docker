@@ -1,0 +1,3 @@
+[submodule "dreamfactory"]
+	path = dreamfactory
+	url = git@github.com:pastishosting/df-docker.git
