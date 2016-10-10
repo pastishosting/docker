@@ -8,5 +8,5 @@ if [ $EVENT == "up" ]; then
     # Ugly workaround
     docker-compose -f $COMPOSE_FILE stop
     docker-compose -f $COMPOSE_FILE rm -f
-    docker-compose -f $COMPOSE_FILE start
+    docker-compose -f $COMPOSE_FILE up -d
 fi
