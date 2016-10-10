@@ -41,11 +41,11 @@ services:
       - "plesk-opt-psa:/opt/psa"
       - "plesk-opt-plesk:/opt/plesk"
       - "plesk-var-parallels:/var/parallels"
-      - "$PWD/files/etc/postfix/main.cf:/etc/postfix/main.cf"
-      - "$PWD/files/etc/postfix/sasl_passwd:/etc/postfix/sasl_passwd"
-      - "$PWD/files/etc/postfix/sasl_passwd.db:/etc/postfix/sasl_passwd.db"
-      - "$PWD/files/etc/proftpd.d/pastis-hosting.conf:/etc/proftpd.d/pastis-hosting.conf"
-      - "$PWD/files/ssh/authorized_keys:/root/.ssh/authorized_keys"
+#      - "$PWD/files/etc/postfix/main.cf:/etc/postfix/main.cf"
+#      - "$PWD/files/etc/postfix/sasl_passwd:/etc/postfix/sasl_passwd"
+#      - "$PWD/files/etc/postfix/sasl_passwd.db:/etc/postfix/sasl_passwd.db"
+#      - "$PWD/files/etc/proftpd.d/pastis-hosting.conf:/etc/proftpd.d/pastis-hosting.conf"
+#      - "$PWD/files/ssh/authorized_keys:/root/.ssh/authorized_keys"
     links:
       - mysql:mysql.1
     external_links:
