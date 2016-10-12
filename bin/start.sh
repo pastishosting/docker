@@ -6,7 +6,8 @@ source $SCRIPT_DIR/lib.sh
 # Fail early
 set -e
 
-HOST=${1:-$(hostname)}
+PULL=${1:-""}
+HOST=${2:-$(hostname)}
 HOSTSUFFIX=""
 
 log "Starting services - hostname=${HOST}"
@@ -23,7 +24,9 @@ for service in $ROOT_DIR/services/*; do
             log "Executing docker-compose up - hostname=${HOST}, service=${serviceName}"
 
             # Get latest images
-            docker-compose -f $service/docker-compose${HOSTSUFFIX}.yml pull
+            if [ $PULL == "pull" ]; then
+                docker-compose -f $service/docker-compose${HOSTSUFFIX}.yml pull
+            fi
 
             # Recreate and start images if necessary
             docker-compose -f $service/docker-compose${HOSTSUFFIX}.yml up -d
