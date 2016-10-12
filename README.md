@@ -34,7 +34,7 @@ git pull && git submodule update
 ## (re)Démarrage des services
 
 ```bash
-./bin/start.sh
+./bin/start.sh && cd services/traefik && docker-compose -f docker-compose-$(hostname).yml up -d && cd -
 ```
 
 ## Suppression des volumes Docker inutilisés
