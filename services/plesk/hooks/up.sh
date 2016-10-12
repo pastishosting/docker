@@ -5,7 +5,7 @@
 COMPOSE_FILE=$1
 
 # Apply latest Plesk patches
-/opt/psa/admin/sbin/autoinstaller --select-product-id plesk --select-release-current --reinstall-patch --install-component panel
+docker-compose -f $COMPOSE_FILE exec plesk /opt/psa/admin/sbin/autoinstaller --select-product-id plesk --select-release-current --reinstall-patch --install-component panel
 
 # Fix running services
 docker-compose -f $COMPOSE_FILE exec plesk service php5-fpm restart
