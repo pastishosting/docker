@@ -2,12 +2,13 @@ version: '2'
 
 volumes:
   plesk-etc: ~
-  plesk-opt-psa: ~
   plesk-opt-plesk: ~
+  plesk-opt-psa: ~
   plesk-var-lib-mysql: ~
   plesk-var-lib-plesk: ~
   plesk-var-lib-psa: ~
   plesk-var-parallels: ~
+  plesk-var-spool-cron: ~
   plesk-var-www: ~
 
 networks:
