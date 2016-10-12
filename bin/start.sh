@@ -24,7 +24,7 @@ for service in $ROOT_DIR/services/*; do
             log "Executing docker-compose up - hostname=${HOST}, service=${serviceName}"
 
             # Get latest images
-            if [ $PULL == "pull" ]; then
+            if [[ $PULL == "pull" ]]; then
                 docker-compose -f $service/docker-compose${HOSTSUFFIX}.yml pull
             fi
 
