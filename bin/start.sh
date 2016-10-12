@@ -19,12 +19,13 @@ for service in $ROOT_DIR/services/*; do
                 HOSTSUFFIX="-${HOST}"
             fi
 
+            # Execute hooks
             log "service is enabled on host - hostname=${HOST}, service=${serviceName}"
             log "Executing docker-compose up - hostname=${HOST}, service=${serviceName}"
             docker-compose -f $service/docker-compose${HOSTSUFFIX}.yml up -d
             if [ -f $service/hooks/up.sh ]; then
                 log "Executing hook - hostname=${HOST}, service=${serviceName}, hook=up.sh"
-                ( exec $service/hooks/up.sh $service/docker-compose-${HOST}.yml )
+                ( exec $service/hooks/up.sh $service/docker-compose${HOSTSUFFIX}.yml )
             fi
         fi
     fi
