@@ -1,0 +1,75 @@
+version: '2'
+
+volumes:
+  plesk-etc: ~
+  plesk-opt-psa: ~
+  plesk-opt-plesk: ~
+  plesk-var-lib-mysql: ~
+  plesk-var-lib-plesk: ~
+  plesk-var-lib-psa: ~
+  plesk-var-parallels: ~
+  plesk-var-www: ~
+
+networks:
+  default: ~
+  solr14:
+    external:
+      name: solr14_default
+
+services:
+  plesk:
+    build:
+      context: .
+    image: pastishosting/plesk
+    privileged: true
+    restart: always
+    expose:
+      - "22"
+    ports:
+     - "21:21"
+     - "8880:8880"
+     - "8443:8443"
+     - "2222:22"
+     # Passive FTP ports
+     - "30000-30009:30000-30009"
+    volumes:
+      - "plesk-var-www:/var/www"
+      - "plesk-var-lib-plesk:/var/lib/plesk"
+      - "plesk-var-lib-psa:/var/lib/psa"
+      - "plesk-var-lib-mysql:/var/lib/mysql"
+      - "plesk-etc:/etc"
+      - "plesk-opt-psa:/opt/psa"
+      - "plesk-opt-plesk:/opt/plesk"
+      - "plesk-var-parallels:/var/parallels"
+#      - "$PWD/files/etc/postfix/main.cf:/etc/postfix/main.cf"
+#      - "$PWD/files/etc/postfix/sasl_passwd:/etc/postfix/sasl_passwd"
+#      - "$PWD/files/etc/postfix/sasl_passwd.db:/etc/postfix/sasl_passwd.db"
+#      - "$PWD/files/etc/proftpd.d/pastis-hosting.conf:/etc/proftpd.d/pastis-hosting.conf"
+#      - "$PWD/files/ssh/authorized_keys:/root/.ssh/authorized_keys"
+    links:
+      - mysql:mysql.1
+    external_links:
+      - solr14_solr-14_1:solr14
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.frontend.rule=HostRegexp:{subdomain:.+}.{domain:.+}"
+      - "traefik.frontend.priority=1"
+      - "traefik.port=80"
+      - "traefik.docker.network=plesk_default"
+    domainname: pastis-hosting.net
+    hostname: plesk
+    networks:
+      - default
+      - solr14
+
+  mysql:
+    image: percona
+    volumes:
+      - "/opt/docker/volumes/mysql.1:/var/lib/mysql"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=raoulETalain"
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=false"

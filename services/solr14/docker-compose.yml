@@ -1,0 +1,20 @@
+version: '2'
+
+volumes:
+  solr-14-data: ~
+
+services:
+  solr-14:
+    image: sebstinkeste/solr-1.4:jre6
+    restart: always
+    environment:
+      - "SOLR_VERSION=1.4.0"
+    ports:
+      - "8983:8983"
+    volumes:
+      - "solr-14-data:/usr/local/tomcat/solr/solr/data"
+      - "$PWD/conf:/usr/local/tomcat/solr/solr/conf"
+    ports:
+      - "8983:8983"
+    labels:
+      - "io.rancher.container.network=true"

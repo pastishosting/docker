@@ -1,0 +1,47 @@
+version: '2'
+
+volumes:
+  airtime-etc-airtime: ~
+  airtime-etc-icecast2: ~
+  airtime-etc-postgresql: ~
+  airtime-srv-airtime-stor: ~
+  airtime-usr-lib-airtime: ~
+  airtime-usr-share-airtime: ~
+  airtime-var-lib-postgresql: ~
+  airtime-var-lib-rabbitmq: ~
+  airtime-var-log-airtime: ~
+  airtime-var-log-icecast2: ~
+  airtime-var-log-postgresql: ~
+  airtime-var-log-rabbitmq: ~
+  airtime-var-tmp-airtime: ~
+
+services:
+  airtime:
+    build: .
+    image: pastishosting/airtime
+    restart: always
+    volumes:
+      - "airtime-etc-airtime:/etc/airtime"
+      - "airtime-etc-icecast2:/etc/icecast2"
+      - "airtime-etc-postgresql:/etc/postgresql"
+      - "airtime-srv-airtime-stor:/srv/airtime/stor:rw"
+      - "airtime-usr-lib-airtime:/usr/lib/airtime"
+      - "airtime-usr-share-airtime:/usr/share/airtime"
+      - "airtime-var-lib-postgresql:/var/lib/postgresql"
+      - "airtime-var-lib-rabbitmq:/var/lib/rabbitmq"
+      - "airtime-var-log-airtime:/var/log/airtime"
+      - "airtime-var-log-icecast2:/var/log/icecast2"
+      - "airtime-var-log-postgresql:/var/log/postgresql"
+      - "airtime-var-log-rabbitmq:/var/log/rabbitmq"
+      - "airtime-var-tmp-airtime:/var/tmp/airtime"
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.frontend.rule=HostRegexp:airtime.incongru.org"
+      - "traefik.port=80"
+      - "traefik.docker.network=airtime_default"
+    ports:
+      - "8000:8000"
+    domainname: incongru.org
+    hostname: airtime

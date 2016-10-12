@@ -34,5 +34,11 @@ git pull && git submodule update
 ## (re)Démarrage des services
 
 ```bash
-./start
+./bin/start.sh
+```
+
+## Suppression des volumes Docker inutilisés
+
+```bash
+./bin/docker-cleanup-volumes.sh
 ```
