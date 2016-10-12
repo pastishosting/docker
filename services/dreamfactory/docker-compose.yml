@@ -47,7 +47,7 @@ services:
       MYSQL_PASSWORD: df_admin
     image: mysql
     volumes:
-      dreamfactory-var-lib-mysql:/var/lib/mysql
+      - dreamfactory-var-lib-mysql:/var/lib/mysql
     labels:
       - "io.rancher.container.network=true"
       - "traefik.enable=false"
