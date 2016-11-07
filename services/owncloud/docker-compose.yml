@@ -1,0 +1,40 @@
+version: '2'
+
+volumes:
+  owncloud-var-www-html-app: ~
+  owncloud-var-www-html-config: ~
+  owncloud-var-www-html-data: ~
+  owncloud-var-lib-mysql: ~
+
+services:
+  owncloud:
+    image: owncloud
+    restart: always
+    ports:
+      - "8090:80"
+    volumes:
+      - "owncloud-var-www-html-app:/var/www/html/app"
+      - "owncloud-var-www-html-config:/var/www/html/config"
+      - "owncloud-var-www-html-data:/var/www/html/data"
+    links:
+      - mysql:mysql
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.frontend.rule=HostRegexp:boiboite.pastis-hosting.net"
+      - "traefik.frontend.priority=1"
+      - "traefik.port=80"
+      - "traefik.docker.network=owncloud_default"
+    domainname: pastis-hosting.net
+    hostname: boiboite
+
+  mysql:
+    image: percona
+    volumes:
+      - "owncloud-var-lib-mysql:/var/lib/mysql"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=OcKuict1"
+    labels:
+      - "io.rancher.container.network=true"
+      - "traefik.enable=false"
