@@ -12,6 +12,7 @@ docker-compose -f $COMPOSE_FILE exec plesk /opt/psa/admin/sbin/autoinstaller --s
 # Fix running services
 docker-compose -f $COMPOSE_FILE exec plesk service php5-fpm restart
 docker-compose -f $COMPOSE_FILE exec plesk service ssh start
+docker-compose -f $COMPOSE_FILE exec plesk service xinetd start
 docker-compose -f $COMPOSE_FILE exec plesk service sw-cp-server restart
 
 # Deploy SSH keys
