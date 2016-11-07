@@ -11,10 +11,13 @@ networks:
   dreamfactory:
     external:
       name: dreamfactory_default
+  owncloud:
+    external:
+      name: owncloud_default
 
 services:
   traefik:
-    image: traefik:v1.0.2
+    image: traefik:v1.0.3
     restart: always
     volumes:
       - "$PWD/etc/traefik/traefik.toml:/etc/traefik/traefik.toml"
@@ -26,4 +29,5 @@ services:
       - airtime
       - default
       - dreamfactory
+      - owncloud
       - plesk
