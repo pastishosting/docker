@@ -10,8 +10,6 @@ services:
   owncloud:
     image: owncloud
     restart: always
-    ports:
-      - "8090:80"
     volumes:
       - "owncloud-var-www-html-app:/var/www/html/app"
       - "owncloud-var-www-html-config:/var/www/html/config"
