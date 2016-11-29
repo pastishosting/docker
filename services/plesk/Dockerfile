@@ -13,6 +13,7 @@ RUN apt-get update -y \
         rpl \
         rsync \
         rsyslog \
+        software-properties-common \
         tmpreaper \
         vim \
         # Packages required by some legacy projects
@@ -23,6 +24,11 @@ RUN apt-get update -y \
         sox \
         # -- ouiedire.net
         eyeD3 \
+    # -- daheardit-records.net
+    && add-apt-repository ppa:heyarje/libav-11 \
+    && apt-get update -y \
+    && apt-get install -y \
+        libav-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure packages
