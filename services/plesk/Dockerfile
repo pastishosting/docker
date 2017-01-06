@@ -24,6 +24,8 @@ RUN apt-get update -y \
         sox \
         # -- ouiedire.net
         eyeD3 \
+        # mirror.pastis-hosting.net
+        youtube-dl \
     # -- daheardit-records.net
     && add-apt-repository ppa:heyarje/libav-11 \
     && apt-get update -y \
