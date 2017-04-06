@@ -22,7 +22,9 @@ RUN apt-get update -y \
         libsox-fmt-mp3 \
         mp3gain \
         sox \
-        # -- ouiedire.net
+        # incongru.org
+        bc \
+        # -- ouiedire.net,incongru.org
         eyeD3 \
         # mirror.pastis-hosting.net
         youtube-dl \
