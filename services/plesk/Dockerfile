@@ -22,6 +22,10 @@ RUN apt-get update -y \
         libsox-fmt-mp3 \
         mp3gain \
         sox \
+        # -- www.musiqueapproximative.net
+        python-pip \
+        python-pil \
+        imagemagick \
         # incongru.org
         bc \
         # -- ouiedire.net,incongru.org
@@ -33,6 +37,9 @@ RUN apt-get update -y \
     && apt-get update -y \
     && apt-get install -y \
         libav-tools \
+    && pip install \
+        # -- www.musiqueapproximative.net
+        bnrd \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure packages
