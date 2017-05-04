@@ -39,3 +39,8 @@ for service in $ROOT_DIR/services/*; do
         fi
     fi
 done
+
+# Delete and recreate Traefik container
+docker-compose -f $ROOT_DIR/services/traefik/docker-compose-docker01.yml stop \
+&& docker-compose -f $ROOT_DIR/services/traefik/docker-compose-docker01.yml rm -f \
+&& docker-compose -f $ROOT_DIR/services/traefik/docker-compose-docker01.yml up -d
