@@ -19,7 +19,6 @@ services:
   airtime:
     build: .
     image: pastishosting/airtime
-    restart: always
     volumes:
       - "airtime-etc-airtime:/etc/airtime"
       - "airtime-etc-icecast2:/etc/icecast2"

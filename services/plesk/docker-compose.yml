@@ -23,7 +23,6 @@ services:
       context: .
     image: pastishosting/plesk
     privileged: true
-    restart: always
     expose:
       - "22"
     ports:

@@ -9,7 +9,7 @@ volumes:
 services:
   owncloud:
     image: owncloud
-    restart: always
+    
     volumes:
       - "owncloud-var-www-html-app:/var/www/html/app"
       - "owncloud-var-www-html-config:/var/www/html/config"

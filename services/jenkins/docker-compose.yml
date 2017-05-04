@@ -6,7 +6,7 @@ volumes:
 services:
   jenkins:
     image: jenkins
-    restart: always
+    
     volumes:
       - "jenkins-var-jenkins_home:/var/jenkins_home"
     labels:

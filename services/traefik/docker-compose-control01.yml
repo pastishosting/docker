@@ -12,7 +12,7 @@ networks:
 services:
   traefik:
     image: traefik:v1.0.2
-    restart: always
+    
     volumes:
       - "$PWD/etc/traefik/traefik.toml:/etc/traefik/traefik.toml"
       - "/var/run/docker.sock:/var/run/docker.sock"

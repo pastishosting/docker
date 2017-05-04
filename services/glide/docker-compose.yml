@@ -4,7 +4,7 @@ services:
   glide:
     build: .
     image: fschaper/glide
-    restart: always
+    
     ports:
       - "8099:80"
     labels:

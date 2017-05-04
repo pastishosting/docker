@@ -3,7 +3,7 @@ version: '2'
 services:
   rancher:
     image: rancher/server
-    restart: always
+    
     labels:
       - "io.rancher.container.network=true"
       - "traefik.enable=true"
