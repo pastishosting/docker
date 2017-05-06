@@ -39,7 +39,7 @@ RUN apt-get update -y \
         libav-tools \
     && pip install \
         # -- www.musiqueapproximative.net
-        bnrd \
+        bndr \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure packages
