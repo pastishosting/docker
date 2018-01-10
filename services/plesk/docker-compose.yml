@@ -47,7 +47,6 @@ services:
     external_links:
       - solr14_solr-14_1:solr14
     labels:
-      - "io.rancher.container.network=true"
       - "traefik.enable=true"
       - "traefik.frontend.entryPoints=http"
       - "traefik.frontend.rule=HostRegexp:{subdomain:.+}.{domain:.+}"

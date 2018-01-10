@@ -14,11 +14,14 @@ networks:
   owncloud:
     external:
       name: owncloud_default
+  org_incongru_consternationradio:
+    external:
+      name: org_incongru_consternationradio_default
 
 services:
   traefik:
     image: traefik:v1.0.3
-    
+
     volumes:
       - "$PWD/etc/traefik/traefik.toml:/etc/traefik/traefik.toml"
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -31,3 +34,4 @@ services:
       - dreamfactory
       - owncloud
       - plesk
+      - org_incongru_consternationradio

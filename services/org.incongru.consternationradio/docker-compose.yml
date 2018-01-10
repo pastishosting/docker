@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  liquidsoap:
+    image: nullfunction/liquidsoap
+    volumes:
+      - ./config:/etc/liquidsoap
+      - ./files:/var/lib/files
+    links:
+      - icecast
+  icecast:
+    image: infiniteproject/icecast
+    ports:
+      - 8000:8000
+    environment:
+      - ICECAST_SOURCE_PASSWORD=icecast_source
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./public:/usr/share/nginx/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.frontend.rule=Host:consternationradio.incongru.org"
+      - "traefik.frontend.priority=1"
+      - "traefik.backend=nginx"
+      - "traefik.docker.network=org_incongru_consternationradio_default"
